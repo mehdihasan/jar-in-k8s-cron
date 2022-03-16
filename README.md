@@ -1,5 +1,17 @@
 # Running a JAR as Kubernetes Cron Job
 
+## Build and Deploy
+
+### Build
+
+Go to the terminal and go the root folder of this project and run the following command:
+
+```bash
+make
+```
+
+### Deploy
+
 ```bash
 kubectl apply -f cronjob.yaml
 ```
