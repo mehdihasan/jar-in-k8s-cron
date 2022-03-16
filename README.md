@@ -10,7 +10,7 @@ will run the job periodically.
 ## Procedure
 - create java project
 - create a docker image out of the java project 
-- push the docker image into any docker registry
+- push the docker image into any image registry. I am using DockerHub here. 
 - use the docker image to run the kubernetes cron job
 
 
