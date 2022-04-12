@@ -18,9 +18,10 @@ echo -n 'my-string' | base64
 2. Put your base 64 encoded mail credentials into the `deployment/secret-env.yaml` file.
 3. Run the following commands to deploy the CronJob.
 ```bash
-kubectl apply -f deployment/secret-env.yaml
-kubectl apply -f deployment/secret-cer.yaml
-kubectl apply -f deployment/cronjob.yaml
+kubectl create ns ct
+kubectl apply -f deployment/secret-env.yaml -n ct
+kubectl apply -f deployment/secret-cer.yaml -n ct
+kubectl apply -f deployment/cronjob.yaml -n ct
 ```
 
 will run the job periodically.
