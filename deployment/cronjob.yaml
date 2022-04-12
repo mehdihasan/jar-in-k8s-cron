@@ -1,4 +1,4 @@
-apiVersion: batch/v1beta1
+apiVersion: batch/v1
 kind: CronJob
 metadata:
   name: cron-job-test
@@ -9,7 +9,7 @@ spec:
       template:
         spec:
           containers:
-            - name: cron-job-soes-notifier
+            - name: cron-job-test
               image: mehdihasan/jar-in-cron:latest
               env:
                 - name: SMTP_HOST

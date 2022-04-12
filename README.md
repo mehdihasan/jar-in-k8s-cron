@@ -11,8 +11,12 @@ make
 ```
 
 ### Deploy
-1. Put your mail credentials into the `deployment/secret-env.yaml` file.
-2. Run the following commands to deploy the CronJob.
+1. you need to base64 encode all your secrets required in the secret-env.yaml file. Use the following command to get the base64 encoded string against your secret.
+```bash
+echo -n 'my-string' | base64
+```
+2. Put your base 64 encoded mail credentials into the `deployment/secret-env.yaml` file.
+3. Run the following commands to deploy the CronJob.
 ```bash
 kubectl apply -f deployment/secret-env.yaml
 kubectl apply -f deployment/secret-cer.yaml
@@ -27,8 +31,3 @@ will run the job periodically.
 - create a docker image out of the java project 
 - push the docker image into any image registry. I am using DockerHub here. 
 - use the docker image to run the kubernetes cron job
-
-
-## Future improvements
-- passing arguments from the kubernetes cron job to the java application
-- saving any file to persistent storage form the java application 
