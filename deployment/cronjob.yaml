@@ -1,0 +1,48 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: cron-job-test
+spec:
+  schedule: "*/15 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: cron-job-soes-notifier
+              image: mehdihasan/jar-in-cron:latest
+              env:
+                - name: SMTP_HOST
+                  valueFrom:
+                    secretKeyRef:
+                      name: mail-credentials
+                      key: smtpHost
+                - name: SMTP_PORT
+                  valueFrom:
+                    secretKeyRef:
+                      name: mail-credentials
+                      key: smtpPort
+                - name: USER_ID
+                  valueFrom:
+                    secretKeyRef:
+                      name: mail-credentials
+                      key: userId
+                - name: PASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: mail-credentials
+                      key: password
+                - name: MAIL_TO
+                  value: "email2mehdihasan@gmail.com,mail2cartjhon@gmail.com"
+                - name: CERT_PATH
+                  value: "/mnt/secrets/test-secret/test-secret.json"
+              volumeMounts:
+                - name: test-secret
+                  readOnly: true
+                  mountPath: /mnt/secrets
+          volumes:
+            - name: test-secret
+              secret:
+                secretName: test-secret
+                defaultMode: 420
+          restartPolicy: Never

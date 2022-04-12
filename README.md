@@ -11,9 +11,12 @@ make
 ```
 
 ### Deploy
-
+1. Put your mail credentials into the `deployment/secret-env.yaml` file.
+2. Run the following commands to deploy the CronJob.
 ```bash
-kubectl apply -f cronjob.yaml
+kubectl apply -f deployment/secret-env.yaml
+kubectl apply -f deployment/secret-cer.yaml
+kubectl apply -f deployment/cronjob.yaml
 ```
 
 will run the job periodically.
