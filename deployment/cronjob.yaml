@@ -37,11 +37,11 @@ spec:
                 - name: CERT_PATH
                   value: "/mnt/secrets/test-secret/test-secret.json"
               volumeMounts:
-                - name: test-secret
+                - name: test-volume
                   readOnly: true
                   mountPath: /mnt/secrets
           volumes:
-            - name: test-secret
+            - name: test-volume
               secret:
                 secretName: test-secret
                 defaultMode: 420
