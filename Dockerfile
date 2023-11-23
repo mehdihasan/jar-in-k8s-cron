@@ -11,6 +11,6 @@ ENV VERSION ${version}
 COPY ./scripts/ /bin
 COPY ./src/main/resources/log4j2.properties /bin/log4j2.properties
 
-ADD target/CJE-1.0-SNAPSHOT.jar /
+ADD target/CJE-1.1-SNAPSHOT.jar /
 
 CMD ["/bin/run.sh", "/CJE-1.0-SNAPSHOT.jar"]
